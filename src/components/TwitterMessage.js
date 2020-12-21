@@ -6,15 +6,8 @@ class TwitterMessage extends React.Component {
 
     this.state = {
       message: "",
-      maxChars: 0
+      count: 0
     };
-  }
-
-  handleType = () => {
-    let newcount = this.state.maxChars + 1
-    this.setState({
-      maxChars: newcount
-    })
   }
 
   handleMessageChange = (event) => {
@@ -29,10 +22,12 @@ class TwitterMessage extends React.Component {
         <strong>Your message:</strong>
         <input type="text" name="message" id="message" 
         value={this.state.message}
-        onKeyDown={this.handleType}
         onChange={this.handleMessageChange}
         />
-        <br></br>{this.props.maxChars}
+        <br></br>
+        Maximum Charcter Length: {this.props.maxChars}
+        <br></br>
+        Characters Remaining: {this.props.maxChars - this.state.message.length }
       </div>
     );
   }
